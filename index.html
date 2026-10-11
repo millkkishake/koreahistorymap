@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>한국사 연표 지도 | 1906–1946</title>
+<style>
+:root{--ink:#202b3c;--muted:#6d7787;--line:#dce3eb;--bg:#f4f7fb;--blue:#2563eb;--red:#dc5a4b;--gold:#c58b22;--purple:#7956c8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Malgun Gothic",sans-serif}
+header{padding:28px max(20px,calc((100vw - 1280px)/2));background:linear-gradient(120deg,#142d4e,#245c78);color:white}
+header h1{font-size:clamp(24px,3vw,36px);margin:0 0 8px}header p{margin:0;color:#dce9f5;line-height:1.65}
+main{max-width:1280px;margin:22px auto;padding:0 18px 40px}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0}
+button{font:inherit;cursor:pointer;border:1px solid var(--line);background:white;color:var(--ink);border-radius:10px;padding:9px 12px}
+button:hover{border-color:#8ca6c5}button.active{background:#1d4265;color:white;border-color:#1d4265}
+.layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(320px,.8fr);gap:18px;align-items:start}
+.panel{background:white;border:1px solid var(--line);border-radius:16px;box-shadow:0 5px 20px #1d35570a;overflow:hidden}
+.panelhead{padding:17px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:center}
+.panelhead h2{font-size:18px;margin:0}.panelbody{padding:16px 18px}
+#map{width:100%;height:auto;display:block;background:#eaf3f7;border-radius:12px}
+.pin{cursor:pointer;stroke:white;stroke-width:2.5}.pin:hover{stroke:#1e293b;stroke-width:3.5}.pintext{font-size:10px;fill:white;font-weight:800;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.legend{display:flex;flex-wrap:wrap;gap:10px 15px;margin:13px 0 3px;font-size:13px;color:#586678}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
+.yearTitle{font-size:28px;font-weight:800}.sub{color:var(--muted);font-size:13px}
+.eventgroup{margin:0 0 18px}.eventgroup h3{font-size:15px;margin:0 0 9px;display:flex;align-items:center;gap:8px}.event{border:1px solid #e7ebf0;border-radius:10px;padding:10px 12px;margin:7px 0;line-height:1.55;font-size:14px;background:#fff}
+.event .tag{font-size:11px;font-weight:750;border-radius:5px;padding:3px 6px;margin-right:7px;white-space:nowrap}
+.tag-korea{background:#e5efff;color:#2459b3}.tag-manchuria{background:#ffe7e2;color:#a73b2e}.tag-china{background:#fff0ce;color:#865900}.tag-global{background:#eee7ff;color:#6844ad}
+.note{font-size:12px;color:#6d7787;line-height:1.6;margin-top:12px}
+.yeargrid{display:flex;flex-wrap:wrap;gap:6px}.yeargrid button{padding:7px 9px;font-size:13px;min-width:57px}
+.empty{color:var(--muted);padding:24px 10px;text-align:center}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.panelhead{padding:14px 16px}.panelbody{padding:12px}.mapwrap{overflow-x:auto}#map{min-width:560px}}
+</style></head><body>
+<header><h1>1906–1946 한국사 연표 지도</h1><p>연도를 누르면 동아시아 정밀 지도에서 한반도·만주·중국에서 일어난 사건을 확인할 수 있습니다.<br>첨부해주신 한국사 중간고사 엑셀의 사건을 바탕으로 정리했습니다.</p></header>
+<main>
+<section class="panel" style="margin-bottom:18px"><div class="panelhead"><h2>연도 선택</h2><span class="sub">총 41개 연도 · 1906–1946</span></div><div class="panelbody"><div class="yeargrid" id="years"></div></div></section>
+<div class="layout">
+<section class="panel"><div class="panelhead"><h2>동아시아 사건 지도</h2><span class="sub" id="mapYear">선택 연도</span></div><div class="panelbody mapwrap">
+<svg id="map" viewBox="0 0 760 570" role="img" aria-label="한반도, 만주, 중국 지역의 사건 위치를 나타내는 정밀 지도">
+<image href="image_0.png" x="0" y="0" width="760" height="570" preserveAspectRatio="xMidYMid meet"/>
+<text class="minor" x="18" y="548">※ 실제 지도에 사건의 주요 활동 지역을 학습용으로 분류하여 표시했습니다. 핀을 누르면 사건 설명이 강조됩니다.</text>
+<g id="pins"></g>
+</svg>
+<div class="legend"><span><i class="dot" style="background:#2563eb"></i>한반도</span><span><i class="dot" style="background:#dc5a4b"></i>만주·연해주</span><span><i class="dot" style="background:#c58b22"></i>중국</span><span><i class="dot" style="background:#7956c8"></i>국제·배경 사건</span></div>
+<p class="note">지도 핀은 사건의 주요 활동 지역을 보여주는 학습용 표시입니다. 여러 지역에 걸친 사건이나 지역을 특정하기 어려운 사건은 개략적으로 분류했습니다. 핀을 누르면 해당 사건 설명이 강조됩니다.</p>
+</div></section>
+<section class="panel"><div class="panelhead"><div><div class="yearTitle" id="titleYear">1906년</div><div class="sub" id="count">사건을 불러오는 중</div></div></div><div class="panelbody" id="events"></div></section>
+</div>
+<section class="panel" style="margin-top:18px"><div class="panelhead"><h2>빠른 탐색</h2><span class="sub">시기별로 이동</span></div><div class="panelbody toolbar">
+<button onclick="selectYear(1910)">1910년대 시작</button><button onclick="selectYear(1919)">3·1 운동</button><button onclick="selectYear(1920)">1920년대</button><button onclick="selectYear(1931)">만주 사변</button><button onclick="selectYear(1937)">중일 전쟁</button><button onclick="selectYear(1945)">광복</button>
+</div></section>
+</main>
+<script>
+const data = [{"year": 1906, "events": [{"text": "서전서숙", "region": "manchuria"}]}, {"year": 1907, "events": [{"text": "서전서숙", "region": "manchuria"}]}, {"year": 1908, "events": [{"text": "서전서숙", "region": "manchuria"}]}, {"year": 1909, "events": [{"text": "서전서숙", "region": "manchuria"}]}, {"year": 1910, "events": [{"text": "[시기] 무단통치", "region": "global"}, {"text": "통감부 -> 조선총독부", "region": "korea"}, {"text": "범죄 즉결례", "region": "korea"}, {"text": "회사령", "region": "korea"}, {"text": "헌병 경찰제도", "region": "korea"}, {"text": "토지조사사업", "region": "korea"}, {"text": "명동 학교", "region": "manchuria"}]}, {"year": 1911, "events": [{"text": "제 1차 조선 교육령", "region": "korea"}, {"text": "토지조사사업", "region": "korea"}, {"text": "명동 학교", "region": "manchuria"}]}, {"year": 1912, "events": [{"text": "토지 조사령", "region": "korea"}, {"text": "조선태형령", "region": "korea"}, {"text": "토지조사사업", "region": "korea"}, {"text": "명동 학교", "region": "manchuria"}]}, {"year": 1913, "events": [{"text": "토지조사사업", "region": "korea"}, {"text": "명동 학교", "region": "manchuria"}]}, {"year": 1914, "events": [{"text": "제1차 세계대전 발발", "region": "global"}, {"text": "대한 광복군 정부", "region": "korea"}, {"text": "토지조사사업", "region": "korea"}, {"text": "명동 학교", "region": "manchuria"}]}, {"year": 1915, "events": [{"text": "토지조사사업", "region": "korea"}, {"text": "명동 학교", "region": "manchuria"}]}, {"year": 1916, "events": [{"text": "토지조사사업", "region": "korea"}, {"text": "명동 학교", "region": "manchuria"}]}, {"year": 1917, "events": [{"text": "러시아 혁명", "region": "global"}, {"text": "토지조사사업", "region": "korea"}, {"text": "명동 학교", "region": "manchuria"}]}, {"year": 1918, "events": [{"text": "제1차 세계대전 종결", "region": "global"}, {"text": "명동 학교", "region": "manchuria"}]}, {"year": 1919, "events": [{"text": "파리 강화회의", "region": "global"}, {"text": "2.8 독립 선언", "region": "korea"}, {"text": "기미 독립 선언서", "region": "korea"}, {"text": "3.1 운동", "region": "korea"}, {"text": "한성 정부 수립", "region": "china"}, {"text": "대한민국 임시 정부 수립", "region": "china"}, {"text": "대한 국민 의회 수립", "region": "china"}, {"text": "극제연맹 위임 통치 사건", "region": "korea"}, {"text": "조선통치 방침", "region": "korea"}, {"text": "경성 방직 주식회사 설립", "region": "korea"}, {"text": "명동 학교", "region": "manchuria"}]}, {"year": 1920, "events": [{"text": "[시기] 문화정치", "region": "global"}, {"text": "산미증식계획", "region": "korea"}, {"text": "회사령 폐지", "region": "korea"}, {"text": "봉오동 전투", "region": "manchuria"}, {"text": "훈춘 사건", "region": "manchuria"}, {"text": "청산리 대첩", "region": "manchuria"}, {"text": "간도 참변", "region": "manchuria"}, {"text": "의열단 결성", "region": "china"}, {"text": "물산장려운동", "region": "korea"}, {"text": "조선교육회 설립", "region": "korea"}, {"text": "연통제, 교통국 발각", "region": "korea"}, {"text": "조선 민족 운동에 대한 대책", "region": "korea"}, {"text": "박재혁의 의열투쟁", "region": "china"}, {"text": "최수봉의 의열투쟁", "region": "china"}, {"text": "명동 학교", "region": "manchuria"}]}, {"year": 1921, "events": [{"text": "자유시 참변", "region": "manchuria"}, {"text": "제1차 국공 합작", "region": "china"}, {"text": "천도교 소년회 조", "region": "korea"}, {"text": "연통제, 교통국 와해", "region": "korea"}, {"text": "김익상의 의열투쟁", "region": "china"}, {"text": "명동 학교", "region": "manchuria"}]}, {"year": 1922, "events": [{"text": "제2차 조선 교육령", "region": "korea"}, {"text": "조선 교육 협회 결성", "region": "korea"}, {"text": "어린이날 행사 개최", "region": "korea"}, {"text": "연통제, 교통국 해체", "region": "korea"}, {"text": "명동 학교", "region": "manchuria"}]}, {"year": 1923, "events": [{"text": "국민 대표 회의", "region": "korea"}, {"text": "이입세 폐지", "region": "korea"}, {"text": "조선혁명선언", "region": "korea"}, {"text": "조선 물산 장려회 조직", "region": "korea"}, {"text": "조선민립대학기성회 조직", "region": "korea"}, {"text": "민립대학설립운동", "region": "korea"}, {"text": "암태도 소작 쟁의", "region": "korea"}, {"text": "조선형평사 결성", "region": "korea"}, {"text": "참의부 조직", "region": "manchuria"}, {"text": "김상옥의 의열투쟁", "region": "china"}, {"text": "명동 학교", "region": "manchuria"}]}, {"year": 1924, "events": [{"text": "경성 제국 대학", "region": "korea"}, {"text": "정의부 조직", "region": "manchuria"}, {"text": "김지섭의 의열투쟁", "region": "china"}, {"text": "명동 학교", "region": "manchuria"}]}, {"year": 1925, "events": [{"text": "치안 유지법", "region": "korea"}, {"text": "이승만 탄핵", "region": "korea"}, {"text": "박은식 추대", "region": "korea"}, {"text": "헌법 개정", "region": "korea"}, {"text": "조선 공산당 결성", "region": "korea"}, {"text": "조선사 편수회 조직", "region": "korea"}, {"text": "중국황푸군관학교 입학", "region": "manchuria"}, {"text": "신민주 조직", "region": "manchuria"}, {"text": "나석주의 의열투쟁", "region": "china"}, {"text": "명동 학교", "region": "manchuria"}]}, {"year": 1926, "events": [{"text": "6.10 만세 운동", "region": "korea"}, {"text": "정우회 선언", "region": "korea"}, {"text": "김구의 국무령 취임", "region": "korea"}, {"text": "민족 유일당 운동", "region": "korea"}]}, {"year": 1927, "events": [{"text": "신간회 창립", "region": "korea"}, {"text": "집단 지도 체제 도입", "region": "korea"}, {"text": "조선 농민 총동맹", "region": "korea"}, {"text": "근우회 조직", "region": "korea"}]}, {"year": 1928, "events": []}, {"year": 1929, "events": [{"text": "대공황", "region": "global"}, {"text": "광주학생 항일 운동", "region": "korea"}, {"text": "3부 통합 운동", "region": "korea"}, {"text": "원산 총파업", "region": "korea"}]}, {"year": 1930, "events": [{"text": "혁명적 노동 조합 결성", "region": "korea"}]}, {"year": 1931, "events": [{"text": "만주 사변", "region": "manchuria"}, {"text": "한인애국단 조직", "region": "korea"}, {"text": "신간회 해소", "region": "korea"}, {"text": "강주룡 파업", "region": "korea"}, {"text": "만주사변", "region": "manchuria"}, {"text": "식민지 공업화 정책", "region": "korea"}, {"text": "병참 기지화 정책", "region": "korea"}]}, {"year": 1932, "events": [{"text": "만주국 수립", "region": "manchuria"}, {"text": "이봉창 의거", "region": "china"}, {"text": "윤봉길 의거", "region": "china"}, {"text": "농촌 진흥 운동", "region": "korea"}, {"text": "영릉가 전투", "region": "manchuria"}, {"text": "쌍성보 전투", "region": "manchuria"}]}, {"year": 1933, "events": [{"text": "흥경성 전투", "region": "manchuria"}, {"text": "대전자령 전투", "region": "manchuria"}]}, {"year": 1934, "events": [{"text": "조선 농지령", "region": "korea"}]}, {"year": 1935, "events": [{"text": "민족 혁명당", "region": "china"}, {"text": "신사 참배", "region": "korea"}]}, {"year": 1936, "events": [{"text": "동북 항일 연군 개편", "region": "manchuria"}, {"text": "조국 광복회 결성", "region": "manchuria"}]}, {"year": 1937, "events": [{"text": "중일 전쟁", "region": "korea"}, {"text": "민족 말살 정책", "region": "korea"}, {"text": "황국 신민 서사", "region": "korea"}, {"text": "한국 광복 운동 단체 연합회 결성", "region": "china"}, {"text": "조선 민족 전선 연맹 결성", "region": "china"}, {"text": "보천보 전투에서 승리", "region": "manchuria"}, {"text": "식민지 공업화 정책 본격적 실행", "region": "korea"}, {"text": "병참 기지화 정책 본격적 실행", "region": "korea"}]}, {"year": 1938, "events": [{"text": "국가총동원법", "region": "korea"}, {"text": "조선어 금지", "region": "korea"}, {"text": "육군 특별 지원 병제", "region": "korea"}, {"text": "조선 의용대", "region": "china"}]}, {"year": 1939, "events": [{"text": "제 2차 세계대전", "region": "global"}, {"text": "국민 징용령", "region": "korea"}]}, {"year": 1940, "events": [{"text": "창씨개명", "region": "korea"}, {"text": "임시정부 충칭 정착", "region": "china"}, {"text": "한국 독립당 창당", "region": "china"}, {"text": "한국 광복군 창설", "region": "china"}]}, {"year": 1941, "events": [{"text": "아시아-태평양 전쟁", "region": "global"}, {"text": "소학교 -> 국민학교", "region": "korea"}, {"text": "대한민국 임시 정부 일제에 선전포고", "region": "china"}]}, {"year": 1942, "events": [{"text": "조선 독립 동맹", "region": "china"}, {"text": "조선 의용군", "region": "china"}, {"text": "김원봉 등 의용대 병력 광복군에 합류", "region": "korea"}]}, {"year": 1943, "events": [{"text": "카이로 회담", "region": "global"}, {"text": "한국 광복군 인도 미얀마 전선 파견", "region": "china"}, {"text": "학도 지원 병제", "region": "korea"}]}, {"year": 1944, "events": [{"text": "국내 진공 작전 준비", "region": "korea"}, {"text": "조선건국동맹 조직", "region": "korea"}, {"text": "징병제", "region": "korea"}, {"text": "여자 정신 근로령", "region": "korea"}]}, {"year": 1945, "events": [{"text": "제 2차 세계대전 종결", "region": "global"}, {"text": "얄타 회담", "region": "global"}, {"text": "포츠담 회담", "region": "global"}]}, {"year": 1946, "events": []}];
+const names={korea:"한반도",manchuria:"만주·연해주",china:"중국",global:"국제 정세·배경"};
+const colors={korea:"#2563eb",manchuria:"#dc5a4b",china:"#c58b22",global:"#7956c8"};
+
+// 지형 이미지 위치에 맞춰 수정한 기준 좌표 (x, y)
+const positions={korea:[435, 300], manchuria:[460, 120], china:[240, 370], global:[200, 490]}; 
+
+let current=null;
+const years=document.getElementById('years');
+data.forEach(d=>{let b=document.createElement('button');b.textContent=d.year;b.dataset.year=d.year;b.onclick=()=>selectYear(d.year);years.appendChild(b)});
+function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function selectYear(y){
+ current=data.find(d=>d.year===y)||data[0];
+ document.querySelectorAll('#years button').forEach(b=>b.classList.toggle('active',+b.dataset.year===current.year));
+ document.getElementById('titleYear').textContent=current.year+'년';
+ document.getElementById('mapYear').textContent=current.year+'년';
+ document.getElementById('count').textContent='엑셀에 기록된 사건 '+current.events.length+'개';
+ const pins=document.getElementById('pins');pins.innerHTML='';
+ const grouped={korea:[],manchuria:[],china:[],global:[]};
+ current.events.forEach(e=>grouped[e.region].push(e));
+ const offsets={korea:0,manchuria:0,china:0,global:0};
+ 
+ current.events.forEach((e,i)=>{
+  let reg=e.region, n=offsets[reg]++, base=positions[reg];
+  let dx=((n%3)-1)*22, dy=Math.floor(n/3)*24;
+  if(reg==='global'){dx=((n%4)-1.5)*23;dy=-Math.floor(n/4)*23}
+  const x=base[0]+dx,y=base[1]+dy;
+  const g=document.createElementNS('http://www.w3.org/2000/svg','g');
+  g.innerHTML=`<circle class="pin" cx="${x}" cy="${y}" r="12" fill="${colors[reg]}"><title>${esc(e.text)}</title></circle><text class="pintext" x="${x}" y="${y}">${i+1}</text>`;
+  g.style.cursor='pointer';g.onclick=()=>{document.querySelectorAll('.event').forEach(el=>el.style.outline='');let el=document.getElementById('event-'+i);if(el){el.style.outline='3px solid '+colors[reg];el.scrollIntoView({behavior:'smooth',block:'nearest'})}};
+  pins.appendChild(g);
+ });
+ const ev=document.getElementById('events');ev.innerHTML='';
+ const order=['korea','manchuria','china','global'];
+ order.forEach(reg=>{
+  if(!grouped[reg].length)return;
+  let section=document.createElement('div');section.className='eventgroup';
+  section.innerHTML=`<h3><i class="dot" style="background:${colors[reg]}"></i>${names[reg]} <span class="sub">${grouped[reg].length}건</span></h3>`;
+  grouped[reg].forEach(e=>{
+   let originalIndex=current.events.indexOf(e);
+   let card=document.createElement('div');card.className='event';card.id='event-'+originalIndex;
+   card.innerHTML=`<span class="tag tag-${reg}">${names[reg]}</span>${esc(e.text)}`;
+   section.appendChild(card);
+  });
+  ev.appendChild(section);
+ });
+ if(!current.events.length)ev.innerHTML='<div class="empty">이 연도에는 입력된 사건이 없습니다.</div>';
+}
+selectYear(data[0].year);
+</script></body></html>
